@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>VueJS Todo App</title>
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/331b2609e2.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Our CSS -->
@@ -10,15 +12,60 @@
   </head>
   <body>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
+          <div id="app"></div>
+        </div> <!-- /.col -->
+      </div> <!-- /.row -->
+    </div> <!--/.container-->
 
-    <div id="app"></div>
 
 
-  
+
+    <template id="todoTemplate">
+
+      <pre>
+        {{ $data | json }}
+      </pre>
+
+      <div class="form-group">
+        <input v-model="newTodo" class="form-control" placeholder="Add todo..." v-on:keyup.enter="addTodo">
+        <button class="btn btn-primary" @click="addTodo">Add Todo</button>
+      </div> <!--/.form-group-->
+
+      <h2>Todos:</h2>
+
+      <table class="table">
+        <!-- <th>Task:</th> -->
+        <!-- <th>Complete:</th> -->
+        <!-- <th>Delete:</th> -->
+        <tr v-for="todo in todoList">
+          <td class="todo-task">{{ todo.task }}</td>
+          <td v-if="todo.completed == true">
+            <button class="btn btn-success" @click="completeTodo($index)">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td v-else="">
+            <button class="btn btn-warning" @click="completeTodo($index)">
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" @click="removeTodo($index)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </template>
+
+
 
 
     <!-- Vue JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap JS -->
