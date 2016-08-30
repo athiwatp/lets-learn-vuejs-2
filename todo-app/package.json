@@ -1,12 +1,18 @@
 {
-  "name": "todo-app",
+  "name": "vuejs-todo-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Todo App with VueJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Robert Guss @robertguss http://robertguss.com",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
 }
