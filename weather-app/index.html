@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>VueJS Todo App</title>
+    <title>VueJS Weather App</title>
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/331b2609e2.js"></script>
     <!-- Bootstrap CSS -->
@@ -31,6 +31,11 @@
           {{ $data | json }}
         </pre>
 
+        <ul v-for="weather in weatherData.main">
+          <li>
+            {{ $index }} : {{ $key }} : {{ weather }}
+          </li>
+        </ul>
 
       </div>
     </template>
