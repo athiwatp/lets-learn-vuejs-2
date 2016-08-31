@@ -27,8 +27,8 @@ new Vue({
       this.todoList.$remove(todo);
     },
 
-    completeTodo: function(index) {
-      this.todoList[index].completed = !this.todoList[index].completed;
+    completeTodo: function(todo) {
+      todo.completed = !todo.completed;
     }
   },
 
