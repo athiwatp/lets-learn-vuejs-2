@@ -3,3 +3,6 @@
 
 .completed {
   text-decoration: line-through; }
+
+.btn-danger {
+  margin-left: 10px; }

@@ -4,26 +4,27 @@ new Vue({
 
   data: {
 
-    newTodo: '',
+    newTodo: {task: '', completed: false},
 
     todoList: [
       {task: 'Go grocery shopping', completed: false},
       {task: 'Pick up kids from school', completed: false},
-      {task: 'Pay phone bill', completed: false}
+      {task: 'Pay phone bill', completed: false},
+      {task: 'Wash car', completed: false},
+      {task: 'Pay electric bill', completed: false},
     ]
   },
 
   methods: {
-    addTodo: function() {
-      var todoTask = this.newTodo.trim();
-      if (todoTask) {
-        this.todoList.push({task: todoTask, complete: false});
-        this.newTodo = '';
+    addTodo: function(newTodo) {
+      if (newTodo.task) {
+        this.todoList.push(newTodo);
+        this.newTodo = {task: '', completed: false};
       }
     },
 
-    removeTodo: function(index) {
-      this.todoList.splice(index, 1);
+    removeTodo: function(todo) {
+      this.todoList.$remove(todo);
     },
 
     completeTodo: function(index) {

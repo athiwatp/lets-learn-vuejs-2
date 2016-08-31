@@ -24,45 +24,58 @@
 
 
     <template id="todoTemplate">
+      <!--everything gets wrapped in a single div or element to prevent 'fragmented template' warning-->
+      <div>
+        <pre>
+          {{ $data | json }}
+        </pre>
 
-      <pre>
-        {{ $data | json }}
-      </pre>
+        <!-- Form for creating new Todo's -->
+        <div class="form-group">
+          <input
+                  type="text"
+                  v-model="newTodo.task"
+                  v-on:keyup.enter="addTodo(newTodo)"
+                  class="form-control"
+                  placeholder="Add todo...">
 
-      <div class="form-group">
-        <input  v-model="newTodo"
-                v-on:keyup.enter="addTodo"
-                class="form-control"
-                placeholder="Add todo...">
+          <button @click="addTodo(newTodo)" class="btn btn-primary">Add Todo</button>
+        </div> <!--/.form-group-->
 
-        <button @click="addTodo" class="btn btn-primary">Add Todo</button>
-      </div> <!--/.form-group-->
+        <!-- Table that display's Todo's -->
+        <h2>Todos:</h2>
+        <ul class="list-group">
+          <li
+            class="list-group-item clearfix"
+            v-bind:class="{ 'completed' : todo.completed }"
+            v-for="todo in todoList ">
 
-      <h2>Todos:</h2>
+            {{ todo.task }}
 
-      <table class="table">
-        <!-- <th>Task:</th> -->
-        <!-- <th>Complete:</th> -->
-        <!-- <th>Delete:</th> -->
-        <tr v-for="todo in todoList">
-          <td v-bind:class="{ 'completed' : todo.completed }">{{ todo.task }}</td>
-          <td v-if="todo.completed == true">
-            <button class="btn btn-success" @click="completeTodo($index)">
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </button>
-          </td>
-          <td v-else="">
-            <button class="btn btn-warning" @click="completeTodo($index)">
-              <i class="fa fa-circle-o" aria-hidden="true"></i>
-            </button>
-          </td>
-          <td>
-            <button class="btn btn-danger" @click="removeTodo($index)">
+            <!-- Delete Button -->
+            <button class="btn btn-danger pull-right" @click="removeTodo(todo)">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
-          </td>
-        </tr>
-      </table>
+
+            <!-- Completed Button -->
+            <button
+              class="btn btn-success pull-right"
+              v-if="todo.completed"
+              @click="completeTodo($index)">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </button>
+
+            <!-- Not Completed Button -->
+            <button
+              class="btn btn-warning pull-right"
+              v-else
+              @click="completeTodo($index)">
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ul>
+
+      </div>
     </template>
 
 
