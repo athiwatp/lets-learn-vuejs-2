@@ -26,6 +26,7 @@
     <template id="todoTemplate">
       <!--everything gets wrapped in a single div or element to prevent 'fragmented template' warning-->
       <div>
+        <!-- Displays data in View Model -->
         <pre>
           {{ $data | json }}
         </pre>
@@ -33,43 +34,48 @@
         <!-- Form for creating new Todo's -->
         <div class="form-group">
           <input
-                  type="text"
-                  v-model="newTodo.task"
-                  v-on:keyup.enter="addTodo(newTodo)"
-                  class="form-control"
-                  placeholder="Add todo...">
+            v-model="newTodo.task"
+            v-on:keyup.enter="addTodo(newTodo)"
+            type="text"
+            class="form-control"
+            placeholder="Add todo...">
 
-          <button @click="addTodo(newTodo)" class="btn btn-primary">Add Todo</button>
+          <button
+            @click="addTodo(newTodo)"
+            class="btn btn-primary">Add Todo
+          </button>
         </div> <!--/.form-group-->
 
-        <!-- Table that display's Todo's -->
-        <h2>Todos:</h2>
+        <!-- List of Todo's -->
+        <h2>Todos: {{ todoTotal }}</h2>
         <ul class="list-group">
           <li
-            class="list-group-item clearfix"
             v-bind:class="{ 'completed' : todo.completed }"
-            v-for="todo in todoList ">
+            v-for="todo in todoList"
+            class="list-group-item clearfix">
 
             {{ todo.task }}
 
             <!-- Delete Button -->
-            <button class="btn btn-danger pull-right" @click="removeTodo(todo)">
+            <button
+              @click="removeTodo(todo)"
+              class="btn btn-danger pull-right" >
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
 
             <!-- Completed Button -->
             <button
-              class="btn btn-success pull-right"
               v-if="todo.completed"
-              @click="completeTodo($index)">
+              @click="completeTodo($index)"
+              class="btn btn-success pull-right">
               <i class="fa fa-check" aria-hidden="true"></i>
             </button>
 
             <!-- Not Completed Button -->
             <button
-              class="btn btn-warning pull-right"
               v-else
-              @click="completeTodo($index)">
+              @click="completeTodo($index)"
+              class="btn btn-warning pull-right">
               <i class="fa fa-circle-o" aria-hidden="true"></i>
             </button>
           </li>

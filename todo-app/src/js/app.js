@@ -30,5 +30,11 @@ new Vue({
     completeTodo: function(index) {
       this.todoList[index].completed = !this.todoList[index].completed;
     }
+  },
+
+  computed: {
+    todoTotal: function() {
+      return this.todoList.length;
+    }
   }
 });
