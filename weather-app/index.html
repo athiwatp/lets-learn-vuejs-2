@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>VueJS Weather App</title>
     <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/331b2609e2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" >
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.block-grid/latest/bootstrap3-block-grid.min.css">
@@ -35,7 +35,8 @@
         <div class="row">
           <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-              <img src="http://openweathermap.org/img/w/{{ weatherData.weather[0].icon }}.png" alt="...">
+              <!-- Use :src syntax to remove the 404 errors, don't use {{ }} -->
+              <img :src=" 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png' ">
               <div class="text-center">{{ weatherData.weather[0].description }}</div>
               <div class="text-center">
                 <h3>{{ weatherLocation.city }}, {{ weatherLocation.state }}</h3>
@@ -52,7 +53,7 @@
           <div class="block-grid-xs-2 block-grid-sm-3 block-grid-md-3">
             <div v-for="item in weatherForecast.list">
               <div class="thumbnail">
-                <img src="http://openweathermap.org/img/w/{{ item.weather[0].icon }}.png" alt="...">
+                <img :src=" 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png' ">
                 <div class="text-center">{{ item.weather[0].description }}</div>
                 <div class="text-center">
                   <h3>{{ weatherLocation.city }}, {{ weatherLocation.state }}</h3>

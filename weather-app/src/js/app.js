@@ -1,7 +1,7 @@
 // const apiKey = '5c9da600a7c42093f56acd5ea7466037';
 // const apiURI = `http://api.openweathermap.org/data/2.5/weather?q=boston,ma&units=imperial&APPID=${apiKey}`
 
-
+Vue.config.warnExpressionErrors = false
 
 new Vue({
   el: '#app',
