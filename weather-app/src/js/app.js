@@ -14,7 +14,7 @@ new Vue({
   ready: function() {
     this.$http.get(apiURI).then((response) => {
       this.$set('weatherData', response.json())
-      console.log(response);
+      // console.log(this.weatherData);
       }, (response) => {
         console.log('There was an error...');
     });

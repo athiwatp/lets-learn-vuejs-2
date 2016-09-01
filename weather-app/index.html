@@ -31,9 +31,9 @@
           {{ $data | json }}
         </pre>
 
-        <ul v-for="weather in weatherData.main">
+        <ul>
           <li>
-            {{ $index }} : {{ $key }} : {{ weather }}
+            {{ weatherData.main.temp }}
           </li>
         </ul>
 
