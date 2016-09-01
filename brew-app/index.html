@@ -26,6 +26,7 @@
 
     <template id="brewTemplate">
       <div class="wrapper">
+        <div class="overlay" v-if="show" transition="overlayshow"></div>
 
         <div class="form-group">
           <label for="">Name of Beer</label>
@@ -44,13 +45,53 @@
           class="btn btn-primary">
           Beer Me!
         </button>
+        <hr>
 
-        <ul>
-          <li>
-            {{ beerData.data[0].name }} <br >
-            {{ beerData.data[0].description }}
-          </li>
-        </ul>
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <div class="thumbnail">
+              <img :src="beerData.data[0].labels.large">
+              <div class="caption">
+                <h3>{{ beerData.data[0].name }}</h3>
+                <p>{{ beerData.data[0].description }}</p>
+                <button @click="beerDetails" class="btn btn-default">More Info...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!--
+|--------------------------------------------------------------------------
+|                           Beer Details
+|--------------------------------------------------------------------------
+-->
+
+  <div class="single-preview" v-if="show" transition="postshow">
+
+    <h2>{{ post[0].title.rendered }}</h2>
+
+    <div class="image">
+      <img :src="beerData.data[0].labels.large">
+    </div> <!-- /.image -->
+
+    <div class="post-content">
+      {{{ post[0].excerpt.rendered }}}
+      <!-- <a v-link="{name:'post', params:{postID: post[0].id }}" class="btn-read-more">Read more</a> -->
+    </div> <!-- /.post-content -->
+
+    <a @click="getThePost(post[0].next_post)" v-if="post[0].next_post" class="post-nav next">
+      <span class="icon-right"></span>
+    </a> <!-- /.post-nav next -->
+
+    <a @click="getThePost(post[0].previous_post)" v-if="post[0].previous_post" class="post-nav prev">
+      <span class="icon-left"></span>
+    </a> <!-- /.post-nav prev -->
+
+    <button class="close-button" @click="closeDetails()">&#215;</button>
+
+  </div> <!-- /.single-preview -->
+
+
 
         <pre>
           {{ $data | json }}

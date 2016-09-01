@@ -1,7 +1,17 @@
-// Download a Chrome Extension Plugin to prevent CORS Errors
-// https://chrome.google.com/webstore/detail/cors-toggle/omcncfnpmcabckcddookmnajignpffnh/related?hl=en
-// Once installed, right click on the extension, click on 'resume default setting', then 'save'
-// make sure extension is turned on and enabled.
+/*
+|-----------------------------------------------------------------------------
+|                                 How to FIX
+| No 'Access-Control-Allow-Origin' header is present on the requested resource
+|-----------------------------------------------------------------------------
+| Download a Chrome Extension Plugin to prevent CORS Errors
+| https://chrome.google.com/webstore/detail/cors-toggle/omcncfnpmcabckcddookmnajignpffnh/related?hl=en
+| Once installed, right click on the extension, click on 'resume default setting', then 'save'
+| * make sure extension is turned on and enabled.
+|
+*/
+
+
+
 
 // This turns off the following errors in the JS console.
 // [Vue warn]: Error when evaluating expression "weatherData.main.temp": TypeError: Cannot read property 'temp' of undefined
@@ -20,7 +30,9 @@ new Vue({
 
   data: {
     beerData: [],
-    beerName: 'corona extra'
+    beerName: 'corona extra',
+    beerDetail: [],
+    show: true
   },
 
   ready: function() {
@@ -39,6 +51,14 @@ new Vue({
         }, (response) => {
           console.log('There was an error...');
       });
-    }
+    },
+
+    beerDetails: function() {
+      this.$set('show', true);
+    },
+
+    closeDetails: function() {
+      this.$set('show', false);
+    },
   }
 });
