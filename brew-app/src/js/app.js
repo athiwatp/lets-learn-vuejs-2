@@ -30,9 +30,10 @@ new Vue({
 
   data: {
     beerData: [],
-    beerName: 'corona extra',
+    beerName: '',
     beerDetail: [],
-    show: false
+    show: false,
+    searched: false,
   },
 
   ready: function() {
@@ -46,6 +47,7 @@ new Vue({
   methods: {
 
     getBeer: function() {
+      this.$set('searched', true);
       this.$http.get(`http://api.brewerydb.com/v2/beers?key=0ea407857da0f90f79f77d9a6271c518&name=${this.beerName}`).then((response) => {
         this.$set('beerData', response.json())
         }, (response) => {

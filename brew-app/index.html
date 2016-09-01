@@ -14,6 +14,7 @@
   <body>
 
     <div class="container">
+      <img src="src/img/beers.jpg" alt="" style="width: 100%;"/>
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
           <div id="app"></div>
@@ -26,6 +27,7 @@
 
     <template id="brewTemplate">
       <div class="wrapper">
+
         <div class="overlay" v-if="show" transition="overlayshow"></div>
 
         <div class="form-group">
@@ -47,7 +49,7 @@
         </button>
         <hr>
 
-        <div class="row">
+        <div class="row" v-show="searched">
           <div class="col-sm-6 col-md-6">
             <div class="thumbnail">
               <img :src="beerData.data[0].labels.large">
@@ -71,12 +73,15 @@
     <h3 class="text-center">{{ beerData.data[0].name }}</h3>
 
     <div class="image">
-      <img :src="beerData.data[0].labels.large">
+      <img :src="beerData.data[0].labels.medium">
     </div> <!-- /.image -->
 
-    <div class="post-content">
-      {{ beerData.data[0].description }}
-    </div> <!-- /.post-content -->
+    <blockquote>
+      <p>
+        {{ beerData.data[0].description }}
+      </p>
+    </blockquote>
+
     <br>
 
     <ul class="list-group">
@@ -110,9 +115,6 @@
       </div>
     </div>
 
-
-
-
     <table class="table table-bordered">
       <tr>
         <th>ibuMin</th>
@@ -139,18 +141,15 @@
       </tr>
     </table>
 
-
-
-
     <button class="close-button" @click="closeDetails()">&#215;</button>
 
   </div> <!-- /.single-preview -->
 
 
 
-        <pre>
+        <!-- <pre>
           {{ $data | json }}
-        </pre>
+        </pre> -->
       </div> <!--/.wrapper-->
     </template>
 
