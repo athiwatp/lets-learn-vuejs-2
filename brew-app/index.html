@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>VueJS Weather App</title>
+    <title>VueJS Beer Me App</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" >
     <!-- Bootstrap CSS -->
@@ -26,9 +26,35 @@
 
     <template id="brewTemplate">
       <div class="wrapper">
-        <!-- <pre>
+
+        <div class="form-group">
+          <label for="">Name of Beer</label>
+          <input
+            v-model="beerName"
+            v-on:keyup.enter="getBeer"
+            type="text"
+            class="form-control"
+            placeholder="Name of beer...">
+        </div>
+
+
+        <button
+          @click="getBeer"
+          type="submit"
+          class="btn btn-primary">
+          Beer Me!
+        </button>
+
+        <ul>
+          <li>
+            {{ beerData.data[0].name }} <br >
+            {{ beerData.data[0].description }}
+          </li>
+        </ul>
+
+        <pre>
           {{ $data | json }}
-        </pre> -->
+        </pre>
       </div> <!--/.wrapper-->
     </template>
 

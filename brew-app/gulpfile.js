@@ -1,6 +1,7 @@
 var gulp            = require('gulp');
 var sass            = require('gulp-sass');
 var browserSync     = require('browser-sync').create();
+var proxy           = require('http-proxy-middleware');
 var reload          = browserSync.reload;
 
 // Compile sass into CSS & auto-inject into browsers
