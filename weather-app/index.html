@@ -7,6 +7,7 @@
     <script src="https://use.fontawesome.com/331b2609e2.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.block-grid/latest/bootstrap3-block-grid.min.css">
     <!-- Our CSS -->
     <link rel="stylesheet" href="src/css/styles.css">
   </head>
@@ -25,19 +26,85 @@
 
     <template id="weatherTemplate">
       <!--everything gets wrapped in a single div or element to prevent 'fragmented template' warning-->
-      <div>
-        <!-- Displays data in View Model -->
-        <pre>
+      <div class="wrapper">
+
+        <!-- Current Weather
+        ====================-->
+        <h1 class="text-center">Current Weather</h1>
+        <hr>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src="http://openweathermap.org/img/w/{{ weatherData.weather[0].icon }}.png" alt="...">
+              <div class="text-center">{{ weatherData.weather[0].description }}</div>
+              <div class="text-center">
+                <h3>{{ weatherLocation.city }}, {{ weatherLocation.state }}</h3>
+                <h5>Temperature: {{ weatherData.main.temp }}&deg; F</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forecast
+        ==================-->
+        <h1 class="text-center">5 day forecast every 3 hours</h1>
+        <hr>
+          <div class="block-grid-xs-2 block-grid-sm-3 block-grid-md-3">
+            <div v-for="item in weatherForecast.list">
+              <div class="thumbnail">
+                <img src="http://openweathermap.org/img/w/{{ item.weather[0].icon }}.png" alt="...">
+                <div class="text-center">{{ item.weather[0].description }}</div>
+                <div class="text-center">
+                  <h3>{{ weatherLocation.city }}, {{ weatherLocation.state }}</h3>
+                  <h5>Temperature: {{ item.main.temp }}&deg; F</h5>
+                  <h5>Date &amp; Time: <br />{{ item.dt_txt }}&deg; F</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="form-group">
+          <label for="">City</label>
+          <input
+            v-model="city"
+            v-on:keyup.enter="getWeather"
+            type="text"
+            class="form-control"
+            placeholder="Enter a city...">
+        </div>
+
+        <div class="form-group">
+          <label for="">State</label>
+          <input
+            v-model="state"
+            v-on:keyup.enter="getWeather"
+            type="text"
+            class="form-control"
+            placeholder="Enter a state...">
+        </div>
+
+        <button
+          @click="getWeather"
+          type="submit"
+          class="btn btn-primary">
+          Submit
+        </button>
+
+        <button
+          @click="getForecast"
+          type="submit"
+          class="btn btn-danger">
+          Forecast
+        </button>
+        <br />
+        <br />
+
+
+        <!-- <pre>
           {{ $data | json }}
-        </pre>
-
-        <ul>
-          <li>
-            {{ weatherData.main.temp }}
-          </li>
-        </ul>
-
-      </div>
+        </pre> -->
+      </div> <!--/.wrapper-->
     </template>
 
 
