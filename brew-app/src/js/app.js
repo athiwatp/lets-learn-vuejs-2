@@ -32,7 +32,7 @@ new Vue({
     beerData: [],
     beerName: 'corona extra',
     beerDetail: [],
-    show: true
+    show: false
   },
 
   ready: function() {
