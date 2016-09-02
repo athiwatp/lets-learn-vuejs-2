@@ -6,7 +6,7 @@ var reload          = browserSync.reload;
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
-  return gulp.src("./src/sass/*.scss")
+  return gulp.src("./src/sass/styles.scss")
     .pipe(sass())
     .pipe(gulp.dest("./src/css/"))
     .pipe(browserSync.stream());
@@ -22,7 +22,7 @@ gulp.task('serve', ['sass'], function() {
         }
     });
 
-    gulp.watch("src/sass/styles.scss", ['sass', reload]);
+    gulp.watch("src/sass/*.scss", ['sass', reload]);
     gulp.watch("./*.html").on('change', reload);
     gulp.watch("src/js/*.js").on('change', reload);
 });

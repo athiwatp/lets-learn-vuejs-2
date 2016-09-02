@@ -1,0 +1,169 @@
+[{
+    "id": 2,
+    "count": 7,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/cars/",
+    "name": "Cars",
+    "slug": "cars",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/2"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=2"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}, {
+    "id": 6,
+    "count": 7,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/coffee/",
+    "name": "Coffee",
+    "slug": "coffee",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/6"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=6"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}, {
+    "id": 3,
+    "count": 5,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/movies/",
+    "name": "Movies",
+    "slug": "movies",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/3"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=3"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}, {
+    "id": 5,
+    "count": 6,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/music/",
+    "name": "Music",
+    "slug": "music",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/5"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=5"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}, {
+    "id": 4,
+    "count": 4,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/sushi/",
+    "name": "Sushi",
+    "slug": "sushi",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/4"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=4"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}, {
+    "id": 1,
+    "count": 0,
+    "description": "",
+    "link": "http://scotchbox.dev/wp-api-vue/category/uncategorized/",
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "taxonomy": "category",
+    "parent": 0,
+    "_links": {
+        "self": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories/1"
+        }],
+        "collection": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/categories"
+        }],
+        "about": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/taxonomies/category"
+        }],
+        "wp:post_type": [{
+            "href": "http://scotchbox.dev/wp-api-vue/wp-json/wp/v2/posts?categories=1"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https://api.w.org/{rel}",
+            "templated": true
+        }]
+    }
+}]
