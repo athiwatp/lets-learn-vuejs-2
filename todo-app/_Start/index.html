@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>VueJS Todo App</title>
     <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/331b2609e2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Our CSS -->
@@ -14,85 +14,17 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-2">
-          <div id="app"></div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <h1>VueJS Todo-App</h1>
         </div> <!-- /.col -->
       </div> <!-- /.row -->
-    </div> <!--/.container-->
-
-
-
-
-    <template id="todoTemplate">
-      <!--everything gets wrapped in a single div or element to prevent 'fragmented template' warning-->
-      <div>
-        <!-- Displays data in View Model -->
-        <pre>
-          {{ $data | json }}
-        </pre>
-
-        <!-- Form for creating new Todo's -->
-        <div class="form-group">
-          <input
-            v-model="newTodo.task"
-            v-on:keyup.enter="addTodo(newTodo)"
-            type="text"
-            class="form-control"
-            placeholder="Add todo...">
-
-          <button
-            @click="addTodo(newTodo)"
-            class="btn btn-primary">Add Todo
-          </button>
-        </div> <!--/.form-group-->
-
-        <!-- List of Todo's -->
-        <h2>Todos:</h2>
-        <ul class="list-group">
-          <li
-            v-bind:class="{ 'completed' : todo.completed }"
-            v-for="todo in todoList | orderBy 'completed' "
-            class="list-group-item clearfix">
-
-            {{ todo.task }}
-
-            <!-- Delete Button -->
-            <button
-              @click="removeTodo(todo)"
-              class="btn btn-danger pull-right" >
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-
-            <!-- Completed Button -->
-            <button
-              v-if="todo.completed"
-              @click="completeTodo(todo)"
-              class="btn btn-success pull-right">
-              <i class="fa fa-check" aria-hidden="true"></i>
-            </button>
-
-            <!-- Not Completed Button -->
-            <button
-              v-else
-              @click="completeTodo(todo)"
-              class="btn btn-warning pull-right">
-              <i class="fa fa-circle-o" aria-hidden="true"></i>
-            </button>
-          </li>
-        </ul>
-
-      </div>
-    </template>
+    </div> <!-- /.container-fluid -->
 
 
 
 
     <!-- Vue JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Our JS -->
     <script src="src/js/app.js"></script>
   </body>
