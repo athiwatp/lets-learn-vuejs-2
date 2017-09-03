@@ -1,14 +1,13 @@
 import {Line} from 'vue-chartjs'
-import axios from 'axios'
+// import axios from 'axios'
+// import prices from '../../data/prices.json'
 
 export default Line.extend({
+  props: ['name', 'usd', 'btc'],
   data () {
     return {
       gradient: null,
-      gradient2: null,
-      currencyName: [],
-      currencyPriceUSD: [],
-      currencyPriceBTC: []
+      gradient2: null
     }
   },
   mounted () {
@@ -23,22 +22,24 @@ export default Line.extend({
     this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.25)')
     this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)')
 
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=10')
-      .then((response) => {
-        // console.log(response)
-        this.currencyName = response.data.map(currency => currency.name)
-        this.currencyPriceUSD = response.data.map(currency => currency.price_usd)
-        this.currencyPriceBTC = response.data.map(currency => currency.price_btc)
-        this.setGraph()
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    this.setGraph()
+
+    // axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=10')
+    //   .then((response) => {
+    //     // console.log(response)
+    //     this.currencyName = response.data.map(currency => currency.name)
+    //     this.currencyPriceUSD = response.data.map(currency => currency.price_usd)
+    //     this.currencyPriceBTC = response.data.map(currency => currency.price_btc)
+    //     this.setGraph()
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
   },
   methods: {
     setGraph () {
       this.renderChart({
-        labels: this.currencyName,
+        labels: this.name,
         datasets: [
           {
             label: 'Price $USD',
@@ -47,7 +48,7 @@ export default Line.extend({
             borderWidth: 1,
             pointBorderColor: 'white',
             backgroundColor: this.gradient,
-            data: this.currencyPriceUSD
+            data: this.usd
           },
           {
             label: 'Price BTC',
@@ -56,7 +57,7 @@ export default Line.extend({
             pointBorderColor: 'white',
             borderWidth: 1,
             backgroundColor: this.gradient2,
-            data: this.currencyPriceBTC
+            data: this.btc
           }
         ]
       }, {responsive: true, maintainAspectRatio: false})

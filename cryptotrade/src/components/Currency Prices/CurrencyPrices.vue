@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <line-chart></line-chart>
+        <line-chart
+        :name="currencyName"
+        :usd="currencyPriceUSD"
+        :btc="currencyPriceBTC"
+        >
+
+        </line-chart>
       </div> <!-- /.col -->
     </div> <!-- /.row -->
   </div> <!-- /.container-fluid -->
@@ -10,16 +16,24 @@
 
 <script>
 import LineChart from './LineChart'
+import prices from '../../data/prices.json'
 
 export default {
   name: '',
   components: {
-    'line-chart': LineChart
+    LineChart
   },
   data () {
     return {
-      //
+      currencyName: [],
+      currencyPriceUSD: [],
+      currencyPriceBTC: []
     }
+  },
+  mounted () {
+    this.currencyName = prices.map(currency => currency.name)
+    this.currencyPriceUSD = prices.map(currency => currency.price_usd)
+    this.currencyPriceBTC = prices.map(currency => currency.price_btc)
   }
 }
 </script>
