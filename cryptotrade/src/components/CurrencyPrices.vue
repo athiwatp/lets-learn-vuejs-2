@@ -1,16 +1,16 @@
 <template>
-  <div class="small">
-    <line-chart :chart-data="datacollection"></line-chart>
+  <div>
+    <horizontal-bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></horizontal-bar-chart>
   </div>
 </template>
 
 <script>
-  import LineChart from './LineChart.js'
-  import prices from '../../data/prices.json'
+  import HorizontalBarChart from './Charts/HorizontalBarChart.js'
+  import prices from '../data/prices.json'
 
   export default {
     components: {
-      LineChart
+      HorizontalBarChart
     },
     data () {
       return {
@@ -48,8 +48,5 @@
 </script>
 
 <style>
-  .small {
-    max-width: 600px;
-    margin:  150px auto;
-  }
+
 </style>
