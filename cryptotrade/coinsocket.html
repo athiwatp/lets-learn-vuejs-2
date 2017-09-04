@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+    <body>
+    ETH:
+    <div id="ETH"></div>
+
+    <script type="text/javascript">
+    var socket = io.connect('http://socket.coincap.io');
+
+    socket.on('trades', function (tradeMsg) {
+      console.log(tradeMsg);
+
+      if(tradeMsg.message.coin == "ETH"){
+        document.getElementById("ETH").innerHTML = tradeMsg.message.msg.price;
+      }
+    })
+    </script>
+    </body>
+</html>

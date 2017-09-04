@@ -6,10 +6,15 @@
         <button class="btn btn-success" @click="getCoins">Update</button>
         <br>
         <br>
-
         <bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></bar-chart>
+        <br>
+        <br>
         <pie-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></pie-chart>
+        <br>
+        <br>
         <line-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+        <br>
+        <br>
         <horizontal-bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></horizontal-bar-chart>
       </div> <!-- /.col -->
     </div> <!-- /.row -->

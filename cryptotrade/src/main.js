@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vue2Filters from 'vue2-filters'
+import VueWebsocket from 'vue-websocket'
 
 Vue.config.productionTip = false
 
 Vue.use(Vue2Filters)
+Vue.use(VueWebsocket, 'http://socket.coincap.io')
 
 /* eslint-disable no-new */
 new Vue({
