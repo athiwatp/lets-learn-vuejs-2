@@ -1,30 +1,49 @@
 <template>
-  <div>
-    <horizontal-bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></horizontal-bar-chart>
-  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12 col-md-12'>
+        <input type="number" v-model="limit">
+        <button class="btn btn-success" @click="getCoins">Update</button>
+        <br>
+        <br>
+
+        <bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></bar-chart>
+        <pie-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></pie-chart>
+        <line-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+        <horizontal-bar-chart :chart-data="datacollection" :options="{responsive: true, maintainAspectRatio: false}"></horizontal-bar-chart>
+      </div> <!-- /.col -->
+    </div> <!-- /.row -->
+  </div> <!-- /.container-fluid -->
 </template>
 
 <script>
+  import axios from 'axios'
+  import BarChart from './Charts/BarChart.js'
   import HorizontalBarChart from './Charts/HorizontalBarChart.js'
-  import prices from '../data/prices.json'
+  import LineChart from './Charts/LineChart.js'
+  import PieChart from './Charts/PieChart.js'
+  // import prices from '../data/prices.json'
 
   export default {
     components: {
-      HorizontalBarChart
+      BarChart,
+      HorizontalBarChart,
+      LineChart,
+      PieChart
     },
     data () {
       return {
         datacollection: null,
         currencyName: [],
         currencyPriceUSD: [],
-        currencyPriceBTC: []
+        currencyPriceBTC: [],
+        limit: '10'
       }
     },
     mounted () {
-      this.currencyName = prices.map(currency => currency.name)
-      this.currencyPriceUSD = prices.map(currency => currency.price_usd)
-      this.currencyPriceBTC = prices.map(currency => currency.price_btc)
-      this.fillData()
+      this.getCoins()
+
+      console.log(this.currencyName)
     },
     methods: {
       fillData () {
@@ -42,6 +61,18 @@
             }
           ]
         }
+      },
+      getCoins () {
+        axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=${this.limit}`)
+        .then((response) => {
+          this.currencyName = response.data.map(currency => currency.name)
+          this.currencyPriceUSD = response.data.map(currency => currency.price_usd)
+          this.currencyPriceBTC = response.data.map(currency => currency.price_btc)
+          this.fillData()
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       }
     }
   }

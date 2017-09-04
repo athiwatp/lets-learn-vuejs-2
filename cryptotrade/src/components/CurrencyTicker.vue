@@ -5,12 +5,12 @@
 
         <h2 class="text-center">Coin Market Cap</h2>
         <br>
-        <input type="number" v-model="amount">
-        <button class="btn btn-success" @click="updateAmount">Update</button>
+        <input type="number" v-model="limit">
+        <button class="btn btn-success" @click="getCoins">Update</button>
         <br>
         <br>
 
-        <table class="table table-bordered">
+        <table class="table">
           <thead>
             <tr>
               <th>Rank</th>
@@ -28,19 +28,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="currency in currencies">
-              <td>{{ currency.rank }}</td>
-              <td>{{ currency.name }}</td>
-              <td>{{ currency.symbol }}</td>
-              <td>{{ currency.price_usd }}</td>
-              <td>{{ currency.price_btc }}</td>
-              <td>{{ currency.market_cap_usd }}</td>
-              <td>{{ currency.available_supply }}</td>
-              <td>{{ currency.total_supply }}</td>
-              <td>{{ currency.percent_change_1h }}</td>
-              <td>{{ currency.percent_change_24h }}</td>
-              <td>{{ currency.percent_change_7d }}</td>
-              <td>{{ currency.last_updated }}</td>
+            <tr v-for="coin in coins">
+              <td>{{ coin.rank }}</td>
+              <td>{{ coin.name }}</td>
+              <td>{{ coin.symbol }}</td>
+              <td>{{ coin.price_usd | currency }}</td>
+              <td>{{ coin.price_btc }}</td>
+              <td>{{ coin.market_cap_usd | currency }}</td>
+              <td>{{ coin.available_supply | currency }}</td>
+              <td>{{ coin.total_supply | currency }}</td>
+              <td v-bind:style="getColor(coin.percent_change_1h)">{{ coin.percent_change_1h }}</td>
+              <td v-bind:style="getColor(coin.percent_change_24h)">{{ coin.percent_change_24h }}</td>
+              <td v-bind:style="getColor(coin.percent_change_7d)">{{ coin.percent_change_7d }}</td>
+              <td>{{ coin.last_updated }}</td>
             </tr>
           </tbody>
         </table>
@@ -58,29 +58,25 @@ export default {
   name: 'Ticker',
   data () {
     return {
-      currencies: [],
-      selected: '',
-      amount: ''
+      coins: [],
+      limit: '10'
     }
   },
   mounted () {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=5')
-    .then((response) => {
-      this.currencies = response.data
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    this.getCoins()
   },
   methods: {
-    updateAmount () {
-      axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=${this.amount}`)
+    getCoins () {
+      axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=${this.limit}`)
       .then((response) => {
-        this.currencies = response.data
+        this.coins = response.data
       })
       .catch((error) => {
         console.log(error)
       })
+    },
+    getColor: (num) => {
+      return num > 0 ? 'color:green;' : 'color:red;'
     }
   }
 }
