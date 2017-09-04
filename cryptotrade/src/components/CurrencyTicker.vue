@@ -2,6 +2,14 @@
   <div class='container'>
     <div class='row'>
       <div class='col-sm-12 col-md-12'>
+
+        <h2 class="text-center">Coin Market Cap</h2>
+        <br>
+        <input type="number" v-model="amount">
+        <button class="btn btn-success" @click="updateAmount">Update</button>
+        <br>
+        <br>
+
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -51,17 +59,29 @@ export default {
   data () {
     return {
       currencies: [],
-      selected: ''
+      selected: '',
+      amount: ''
     }
   },
   mounted () {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=10')
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=5')
     .then((response) => {
       this.currencies = response.data
     })
     .catch((error) => {
       console.log(error)
     })
+  },
+  methods: {
+    updateAmount () {
+      axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=${this.amount}`)
+      .then((response) => {
+        this.currencies = response.data
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
   }
 }
 </script>
