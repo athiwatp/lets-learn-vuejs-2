@@ -43,19 +43,19 @@
               </ul>
               <div class='available'>
                   <div>Color:
-                    <select class="form-control">
+                    <select class="form-control" v-model="color">
                       <option v-for="color in colors" :value="color">{{ color }}</option>
                     </select>
                   </div>
                   <br>
                 <div class='size-in'>Size:
-                  <select class="form-control">
+                  <select class="form-control" v-model="size">
                     <option v-for="size in sizes" :value="size">{{ size }}</option>
                   </select>
                 </div>
                 <div class='clearfix'> </div>
             </div>
-              <a href='#' class='add-cart item_add'>ADD TO CART</a>
+              <a href='#' class='add-cart item_add' @click.prevent="addToCart">ADD TO CART</a>
             </div>
           </div>
           <div class='clearfix'> </div>
@@ -235,17 +235,28 @@ $(function () {
 
 export default {
   name: '',
-  props: ['name', 'price', 'description', 'images', 'colors', 'sizes'],
+  props: ['name', 'price', 'description', 'images', 'colors', 'sizes', 'colorDefault', 'sizeDefault'],
   data () {
     return {
-
+      color: this.colorDefault,
+      size: this.sizeDefault
     }
   },
-  mounted () {
+  created () {
 
   },
   methods: {
-
+    addToCart () {
+      this.$store.commit({
+        type: 'updateCart',
+        name: this.name,
+        price: this.price,
+        image: this.images[0],
+        color: this.color,
+        size: this.size
+      })
+      this.$store.commit('updateCartTotal')
+    }
   }
 }
 </script>

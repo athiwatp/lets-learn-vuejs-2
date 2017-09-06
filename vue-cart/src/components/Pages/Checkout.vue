@@ -7,51 +7,44 @@
         <h2>CHECKOUT</h2>
       </div>
       <div class="ckeckout-top">
-      <div class="cart-items">
-       <h3>My Shopping Bag (3)</h3>
+        <div class="cart-items">
+          <h3>My Shopping Bag ({{ this.$store.state.cart.length }})</h3>
 
-      <div class="in-check" >
-        <ul class="unit">
-          <li><span>Item</span></li>
-          <li><span>Product Name</span></li>
-          <li><span>Unit Price</span></li>
-          <li><span>Delivery Details</span></li>
-          <li> </li>
-          <div class="clearfix"> </div>
-        </ul>
-        <ul class="cart-header">
-          <div class="close1"> </div>
-            <li class="ring-in"><a href="single.html" ><img src="/static/images/c-1.jpg" class="img-responsive" alt=""></a>
-            </li>
-            <li><span class="name">Analog Watches</span></li>
-            <li><span class="cost">$ 290.00</span></li>
-            <li><span>Free</span>
-            <p>Delivered in 2-3 business days</p></li>
-          <div class="clearfix"> </div>
-        </ul>
-        <ul class=" cart-header1">
-          <div class="close2"> </div>
-            <li class="ring-in"><a href="single.html" ><img src="/static/images/c-2.jpg" class="img-responsive" alt=""></a>
-            </li>
-            <li><span class="name">Analog Watches</span></li>
-            <li><span class="cost">$ 300.00</span></li>
-            <li><span>Free</span>
-            <p>Delivered in 2-3 business days</p></li>
-            <div class="clearfix"> </div>
-        </ul>
-        <ul class="cart-header2">
-          <div class="close3"> </div>
-            <li class="ring-in"><a href="single.html" ><img src="/static/images/c-3.jpg" class="img-responsive" alt=""></a>
-            </li>
-            <li><span class="name">Analog Watches</span></li>
-            <li><span class="cost">$ 360.00</span></li>
-            <li><span>Free</span>
-            <p>Delivered in 2-3 business days</p></li>
-            <div class="clearfix"> </div>
-        </ul>
+          <div class="in-check" >
+            <ul class="unit">
+              <li><span>Item</span></li>
+              <li><span>Product Name</span></li>
+              <li><span>Unit Price</span></li>
+              <li><span>Delivery Details</span></li>
+              <li> </li>
+              <div class="clearfix"> </div>
+            </ul>
+
+
+            <ul class="cart-header">
+              <div v-for="(item, index) in this.$store.state.cart">
+                <button class="btn btn-danger" @click="removeWatch(index)">Remove</button>
+                  <li class="ring-in">
+                    <img :src="item.image" class="img-responsive" alt="">
+                  </li>
+                  <li>
+                    <span class="name">{{ item.name }}</span>
+                    <small>Size: {{ item.size }}</small>
+                    <br>
+                    <small>Color: {{ item.color }}</small>
+                  </li>
+                  <li><span class="cost">{{ item.price | currency }}</span></li>
+                  <li><span>Free</span>
+                  <p>Delivered in 2-3 business days</p></li>
+                <div class="clearfix"> </div>
+                <br>
+              </div> <!-- v-for -->
+            </ul>
+
+
+          </div>
+        </div>
       </div>
-      </div>
-     </div>
     </div>
   </div>
   <!--end-ckeckout-->
@@ -83,6 +76,12 @@ export default {
   data () {
     return {
       //
+    }
+  },
+  methods: {
+    removeWatch (product) {
+      this.$store.commit('removeWatch', product)
+      this.$store.commit('updateCartTotal')
     }
   }
 }

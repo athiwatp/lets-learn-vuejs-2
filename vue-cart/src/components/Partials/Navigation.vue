@@ -8,12 +8,16 @@
         </div>
         <div class="col-md-6 top-header-left">
           <div class="cart box_1">
-            <a href="checkout.html">
-               <div class="total">
-                <span class="simpleCart_total"></span></div>
-                <img src="/static/images/cart-1.png" alt="" />
-            </a>
-            <!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
+            <router-link to="/checkout">
+              <div class="total">
+                <span class="">
+                  {{ this.$store.state.cartTotal | currency }}
+                </span>
+              </div>
+              <img src="/static/images/cart-1.png" alt="" />
+            </router-link>
+            <span style="color: #fff;" v-if="this.$store.state.cart.length">{{ this.$store.state.cart.length }}</span>
+            <p><a class="simpleCart_empty" @click.prevent="emptyCart">Empty Cart</a></p>
             <div class="clearfix"> </div>
           </div>
         </div>
@@ -24,7 +28,7 @@
   <!--top-header-->
   <!--start-logo-->
   <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <router-link to="/"><h1>Luxury Watches</h1></router-link>
   </div>
   <!--start-logo-->
   <!--bottom-header-->
@@ -59,6 +63,16 @@ export default {
   data () {
     return {
       //
+    }
+  },
+  computed: {
+    cartTotal () {
+      this.$store.state.cartTotal
+    }
+  },
+  methods: {
+    emptyCart () {
+      this.$store.commit('emptyCart')
     }
   }
 }

@@ -7,6 +7,8 @@
     :images="images"
     :colors="colors"
     :sizes="sizes"
+    :colorDefault="colorDefault"
+    :sizeDefault="sizeDefault"
     ></single>
   </div>
 </template>
@@ -24,7 +26,9 @@ export default {
       description: '',
       images: [],
       colors: [],
-      sizes: []
+      sizes: [],
+      colorDefault: '',
+      sizeDefault: ''
     }
   },
   components: {
@@ -37,6 +41,8 @@ export default {
     this.images = watchesJSON.watches[0].images
     this.colors = watchesJSON.watches[0].colors
     this.sizes = watchesJSON.watches[0].sizes
+    this.colorDefault = watchesJSON.watches[0].colors[0]
+    this.sizeDefault = watchesJSON.watches[0].sizes[0]
   },
   methods: {
 
