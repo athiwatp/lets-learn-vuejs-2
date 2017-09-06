@@ -16,14 +16,14 @@
 
             <div class='flexslider'>
                 <ul class='slides'>
-                <li data-thumb='/static/images/s-1.jpg'>
-                  <div class='thumb-image'> <img src='/static/images/s-1.jpg' data-imagezoom='true' class='img-responsive' alt=''/> </div>
+                <li :data-thumb='images[0]'>
+                  <div class='thumb-image'> <img :src='images[0]' data-imagezoom='true' class='img-responsive' alt=''/> </div>
                 </li>
-                <li data-thumb='/static/images/s-2.jpg'>
-                   <div class='thumb-image'> <img src='/static/images/s-2.jpg' data-imagezoom='true' class='img-responsive' alt=''/> </div>
+                <li :data-thumb='images[1]'>
+                   <div class='thumb-image'> <img :src='images[1]' data-imagezoom='true' class='img-responsive' alt=''/> </div>
                 </li>
-                <li data-thumb='/static/images/s-3.jpg'>
-                   <div class='thumb-image'> <img src='/static/images/s-3.jpg' data-imagezoom='true' class='img-responsive' alt=''/> </div>
+                <li :data-thumb='images[2]'>
+                   <div class='thumb-image'> <img :src='images[2]' data-imagezoom='true' class='img-responsive' alt=''/> </div>
                 </li>
                 </ul>
             </div>
@@ -34,69 +34,32 @@
           |                               Product Info
           |--------------------------------------------------------------------------
           -->
-
           <div class='col-md-7 single-top-right'>
             <div class='single-para simpleCart_shelfItem'>
-            <h2>Lorem Ipsum</h2>
-              <div class='star-on'>
-                <ul class='star-footer'>
-                    <li><a href='#'><i> </i></a></li>
-                    <li><a href='#'><i> </i></a></li>
-                    <li><a href='#'><i> </i></a></li>
-                    <li><a href='#'><i> </i></a></li>
-                    <li><a href='#'><i> </i></a></li>
-                  </ul>
-                <div class='review'>
-                  <a href='#'> 1 customer review </a>
-
-                </div>
-              <div class='clearfix'> </div>
-              </div>
-
-              <h5 class='item_price'>$ 95.00</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            <h2>{{ name }}</h2>
+              <h5 class='item_price'>{{ price | currency }}</h5>
+              <ul v-for="item in description">
+                <li>{{ item }}</li>
+              </ul>
               <div class='available'>
-                <ul>
-                  <li>Color
-                    <select>
-                    <option>Silver</option>
-                    <option>Black</option>
-                    <option>Dark Black</option>
-                    <option>Red</option>
-                  </select></li>
-                <li class='size-in'>Size<select>
-                  <option>Large</option>
-                  <option>Medium</option>
-                  <option>small</option>
-                  <option>Large</option>
-                  <option>small</option>
-                </select></li>
+                  <div>Color:
+                    <select class="form-control">
+                      <option v-for="color in colors" :value="color">{{ color }}</option>
+                    </select>
+                  </div>
+                  <br>
+                <div class='size-in'>Size:
+                  <select class="form-control">
+                    <option v-for="size in sizes" :value="size">{{ size }}</option>
+                  </select>
+                </div>
                 <div class='clearfix'> </div>
-              </ul>
             </div>
-              <ul class='tag-men'>
-                <li><span>TAG</span>
-                <span class='women1'>: Women,</span></li>
-                <li><span>SKU</span>
-                <span class='women1'>: CK09</span></li>
-              </ul>
-                <a href='#' class='add-cart item_add'>ADD TO CART</a>
-
+              <a href='#' class='add-cart item_add'>ADD TO CART</a>
             </div>
           </div>
           <div class='clearfix'> </div>
         </div>
-        <div class='tabs'>
-          <ul class='menu_drop'>
-        <li class='item1'><a href='#'><img src='/static/images/arrow.png' alt=''>Description</a>
-          <ul>
-            <li class='subitem1'><a href='#'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-            <li class='subitem2'><a href='#'> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-            <li class='subitem3'><a href='#'>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-          </ul>
-        </li>
-      </ul>
-      </div>
 
         <!--
         |--------------------------------------------------------------------------
@@ -268,13 +231,21 @@ $(function () {
     }
   })
 })
+// end of jQuery
 
 export default {
   name: '',
+  props: ['name', 'price', 'description', 'images', 'colors', 'sizes'],
   data () {
     return {
-      //
+
     }
+  },
+  mounted () {
+
+  },
+  methods: {
+
   }
 }
 </script>
