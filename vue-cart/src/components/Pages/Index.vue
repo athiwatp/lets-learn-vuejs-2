@@ -183,7 +183,7 @@ $(function () {
     auto: true,
     pager: true,
     nav: true,
-    speed: 500,
+    speed: 2000,
     namespace: 'callbacks',
     before: function () {
       $('.events').append('<li>before event fired.</li>')
