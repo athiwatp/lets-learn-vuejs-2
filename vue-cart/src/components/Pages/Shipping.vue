@@ -85,7 +85,7 @@
           </div>
 
           <div style="text-align: right;">
-            <button class="btn btn-default">Submit</button>
+            <button class="btn btn-default" @click.prevent="addBillingShippingAddresses">Submit</button>
           </div>
 
         </form>
@@ -131,6 +131,16 @@ export default {
         shippingCity: this.shippingCity,
         shippingState: this.shippingState,
         shippingZipcode: this.shippingZipcode
+      })
+
+      this.$store.commit({
+        type: 'updateBillingAddress',
+        billingFirstName: this.billingFirstName,
+        billingLastName: this.billingLastName,
+        billingStreetAddress: this.billingAddress,
+        billingCity: this.billingCity,
+        billingState: this.billingState,
+        billingZipcode: this.billingZipcode
       })
     }
   }
