@@ -59,53 +59,66 @@
     <div class='product'>
       <div class='container'>
         <div class='product-top'>
+
+        <!--
+        |--------------------------------------------------------------------------
+        |                              Row #1
+        |--------------------------------------------------------------------------
+        -->
+
           <div class='product-one'>
             <div class='col-md-3 product-left'>
               <div class='product-main simpleCart_shelfItem'>
-                <a href='single.html' class='mask'><img class='img-responsive zoom-img' src='/static/images/p-1.png' alt='' /></a>
+                <router-link to="/watch-1"><img class='img-responsive zoom-img' :src='watch1.images[0]' alt='' /></router-link>
                 <div class='product-bottom'>
-                  <h3>Smart Watches</h3>
+                  <h3>{{ watch1.name }}</h3>
                   <p>Explore Now</p>
-                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>$ 329</span></h4>
+                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>{{ watch1.price | currency }}</span></h4>
                 </div>
                 <div class='srch'>
                   <span>-50%</span>
                 </div>
               </div>
             </div>
+
+
             <div class='col-md-3 product-left'>
               <div class='product-main simpleCart_shelfItem'>
-                <a href='single.html' class='mask'><img class='img-responsive zoom-img' src='/static/images/p-2.png' alt='' /></a>
+                <router-link to="/watch-2"><img class='img-responsive zoom-img' :src='watch2.images[1]' alt='' /></router-link>
                 <div class='product-bottom'>
-                  <h3>Smart Watches</h3>
+                  <h3>{{ watch2.name }}</h3>
                   <p>Explore Now</p>
-                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>$ 329</span></h4>
+                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>{{ watch2.price | currency }}</span></h4>
                 </div>
                 <div class='srch'>
                   <span>-50%</span>
                 </div>
               </div>
             </div>
+
+
             <div class='col-md-3 product-left'>
               <div class='product-main simpleCart_shelfItem'>
-                <a href='single.html' class='mask'><img class='img-responsive zoom-img' src='/static/images/p-3.png'  alt='' /></a>
+                <router-link to="/watch-3"><img class='img-responsive zoom-img' :src='watch3.images[0]' alt='' /></router-link>
                 <div class='product-bottom'>
-                  <h3>Smart Watches</h3>
+                  <h3>{{ watch3.name }}</h3>
                   <p>Explore Now</p>
-                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>$ 329</span></h4>
+                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>{{ watch3.price | currency }}</span></h4>
                 </div>
                 <div class='srch'>
                   <span>-50%</span>
                 </div>
               </div>
             </div>
+
+
             <div class='col-md-3 product-left'>
               <div class='product-main simpleCart_shelfItem'>
-                <a href='single.html' class='mask'><img class='img-responsive zoom-img' src='/static/images/p-4.png' alt='' /></a>
+                <router-link to="/watch-4"><img class='img-responsive zoom-img' :src='watch4.images[0]' alt='' /></router-link>
                 <div class='product-bottom'>
-                  <h3>Smart Watches</h3>
+                  <h3>{{ watch4.name }}</h3>
                   <p>Explore Now</p>
-                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>$ 329</span></h4>
+                  <h4><a class='item_add' href='#'><i></i></a> <span class=' item_price'>{{ watch4.price | currency }}</span></h4>
                 </div>
                 <div class='srch'>
                   <span>-50%</span>
@@ -114,6 +127,12 @@
             </div>
             <div class='clearfix'></div>
           </div>
+
+          <!--
+          |--------------------------------------------------------------------------
+          |                              Row #2
+          |--------------------------------------------------------------------------
+          -->
           <div class='product-one'>
             <div class='col-md-3 product-left'>
               <div class='product-main simpleCart_shelfItem'>
@@ -193,13 +212,25 @@ $(function () {
     }
   })
 })
+// end of jQuery
+
+import watchesJSON from '../../data/watches.json'
 
 export default {
   name: '',
   data () {
     return {
-      //
+      watch1: [],
+      watch2: [],
+      watch3: [],
+      watch4: []
     }
+  },
+  mounted () {
+    this.watch1 = watchesJSON.watches[0]
+    this.watch2 = watchesJSON.watches[1]
+    this.watch3 = watchesJSON.watches[2]
+    this.watch4 = watchesJSON.watches[3]
   }
 }
 </script>
