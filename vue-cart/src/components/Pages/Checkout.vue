@@ -8,7 +8,7 @@
       </div>
       <div class="ckeckout-top">
         <div class="cart-items">
-          <h3>My Shopping Bag ({{ this.$store.state.cart.length }})</h3>
+          <h3>Total Items ({{ this.$store.state.cart.length }})</h3>
 
           <div class="in-check" >
             <ul class="unit">
@@ -19,7 +19,6 @@
               <li> </li>
               <div class="clearfix"> </div>
             </ul>
-
 
             <ul class="cart-header">
               <div v-for="(item, index) in this.$store.state.cart">
@@ -41,7 +40,13 @@
               </div> <!-- v-for -->
             </ul>
 
-
+          </div>
+          <div  style="text-align: right;">
+            <h3>Cart Total: {{ this.$store.state.cartTotal | currency }}</h3>
+            <br>
+            <button class="btn btn-default">
+              <router-link to="/shipping">Shipping &amp; Payment</router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -89,5 +94,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+ a {
+  color: black;
+  text-decoration: none;
+ }
 </style>

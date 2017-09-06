@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="footer-container">
     <!--information-starts-->
   <div class="information">
     <div class="container">
@@ -79,5 +79,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+  .footer-container {
+    padding-top: 100px;
+  }
 </style>

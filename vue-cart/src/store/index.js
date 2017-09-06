@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     cart: [],
-    cartTotal: null
+    cartTotal: null,
+    shippingAddress: {},
+    billingAddress: {}
   },
   mutations: {
     updateCart (state, payload) {
@@ -24,6 +26,12 @@ export default new Vuex.Store({
     },
     removeWatch (state, payload) {
       state.cart.splice(payload, 1)
+    },
+    updateShippingAddress (state, payload) {
+      state.shippingAddress = payload
+    },
+    updateBillingAddress (state, payload) {
+      state.billingAddress = payload
     }
   }
 })

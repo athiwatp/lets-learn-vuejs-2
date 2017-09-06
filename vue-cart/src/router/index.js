@@ -6,6 +6,7 @@ import Watch2 from '@/components/Watches/Watch2'
 import Watch3 from '@/components/Watches/Watch3'
 import Watch4 from '@/components/Watches/Watch4'
 import Checkout from '@/components/Pages/Checkout'
+import Shipping from '@/components/Pages/Shipping'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/checkout',
       name: 'Checkout',
       component: Checkout
+    },
+    {
+      path: '/shipping',
+      name: 'Shipping',
+      component: Shipping
     }
   ]
 })
