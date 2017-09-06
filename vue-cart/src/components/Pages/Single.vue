@@ -208,31 +208,6 @@
 </template>
 
 <script>
-$(function () {
-  $('.flexslider').flexslider({
-    animation: 'slide',
-    controlNav: 'thumbnails'
-  })
-
-  var menuUL = $('.menu_drop > li > ul')
-  var menuA = $('.menu_drop > li > a')
-
-  menuUL.hide()
-
-  menuA.click(function (e) {
-    e.preventDefault()
-    if (!$(this).hasClass('active')) {
-      menuA.removeClass('active')
-      menuUL.filter(':visible').slideUp('normal')
-      $(this).addClass('active').next().stop(true, true).slideDown('normal')
-    } else {
-      $(this).removeClass('active')
-      $(this).next().stop(true, true).slideUp('normal')
-    }
-  })
-})
-// end of jQuery
-
 export default {
   name: '',
   props: ['name', 'price', 'description', 'images', 'colors', 'sizes', 'colorDefault', 'sizeDefault'],
@@ -242,8 +217,10 @@ export default {
       size: this.sizeDefault
     }
   },
-  created () {
-
+  mounted () {
+    setTimeout(() => {
+      this.initSlides()
+    }, 1)
   },
   methods: {
     addToCart () {
@@ -256,6 +233,14 @@ export default {
         size: this.size
       })
       this.$store.commit('updateCartTotal')
+    },
+    initSlides () {
+      $(function () {
+        $('.flexslider').flexslider({
+          animation: 'slide',
+          controlNav: 'thumbnails'
+        })
+      })
     }
   }
 }
