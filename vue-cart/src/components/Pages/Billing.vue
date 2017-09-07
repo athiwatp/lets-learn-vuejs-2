@@ -65,7 +65,20 @@ export default {
       billingZipcode: ''
     }
   },
+  mounted () {
+    this.checkBillingInfo()
+  },
   methods: {
+    checkBillingInfo () {
+      if (this.$store.state.billingAddress.length !== 0) {
+        this.billingFirstName = this.$store.state.billingAddress.billingFirstName
+        this.billingLastName = this.$store.state.billingAddress.billingLastName
+        this.billingAddress = this.$store.state.billingAddress.billingStreetAddress
+        this.billingCity = this.$store.state.billingAddress.billingCity
+        this.billingState = this.$store.state.billingAddress.billingState
+        this.billingZipcode = this.$store.state.billingAddress.billingZipcode
+      }
+    },
     addBillingAddress () {
       this.$store.commit({
         type: 'updateBillingAddress',

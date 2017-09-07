@@ -105,4 +105,8 @@ export default {
   color: black;
   text-decoration: none;
  }
+
+ .ring-in img {
+  width: 150px;
+ }
 </style>

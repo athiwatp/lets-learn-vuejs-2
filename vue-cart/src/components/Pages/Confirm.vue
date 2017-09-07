@@ -68,6 +68,10 @@
           </button>
 
           <button class="btn btn-default">
+            <router-link to="/billing">Update Billing</router-link>
+          </button>
+
+          <button class="btn btn-default">
             <router-link to="/shipping">Update Shipping</router-link>
           </button>
 

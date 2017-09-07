@@ -229,8 +229,8 @@ export default {
         name: this.name,
         price: this.price,
         image: this.images[0],
-        color: this.color,
-        size: this.size
+        color: this.colorDefault,
+        size: this.sizeDefault
       })
       this.$store.commit('updateCartTotal')
     },

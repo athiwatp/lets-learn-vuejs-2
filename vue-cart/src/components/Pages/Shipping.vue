@@ -68,7 +68,20 @@ export default {
       shippingZipcode: ''
     }
   },
+  mounted () {
+    this.checkShippingInfo()
+  },
   methods: {
+    checkShippingInfo () {
+      if (this.$store.state.shippingAddress.length !== 0) {
+        this.shippingFirstName = this.$store.state.shippingAddress.shippingFirstName
+        this.shippingLastName = this.$store.state.shippingAddress.shippingLastName
+        this.shippingAddress = this.$store.state.shippingAddress.shippingStreetAddress
+        this.shippingCity = this.$store.state.shippingAddress.shippingCity
+        this.shippingState = this.$store.state.shippingAddress.shippingState
+        this.shippingZipcode = this.$store.state.shippingAddress.shippingZipcode
+      }
+    },
     sameBillingShipping () {
       this.shippingFirstName = this.$store.state.billingAddress.billingFirstName
       this.shippingLastName = this.$store.state.billingAddress.billingLastName
