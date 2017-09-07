@@ -43,13 +43,13 @@
               </ul>
               <div class='available'>
                   <div>Color:
-                    <select class="form-control" v-model="color">
+                    <select class="form-control" v-model="colorDefault">
                       <option v-for="color in colors" :value="color">{{ color }}</option>
                     </select>
                   </div>
                   <br>
                 <div class='size-in'>Size:
-                  <select class="form-control" v-model="size">
+                  <select class="form-control" v-model="sizeDefault">
                     <option v-for="size in sizes" :value="size">{{ size }}</option>
                   </select>
                 </div>
@@ -213,8 +213,8 @@ export default {
   props: ['name', 'price', 'description', 'images', 'colors', 'sizes', 'colorDefault', 'sizeDefault'],
   data () {
     return {
-      color: this.colorDefault,
-      size: this.sizeDefault
+      colorDefault: this.colorDefault,
+      sizeDefault: this.sizeDefault
     }
   },
   mounted () {
