@@ -85,7 +85,9 @@
           </div>
 
           <div style="text-align: right;">
-            <button class="btn btn-default" @click.prevent="addBillingShippingAddresses">Submit</button>
+            <button class="btn btn-default" @click.prevent="addBillingShippingAddresses">
+              <router-link to="/confirm">Proceed to Checkout</router-link>
+            </button>
           </div>
 
         </form>
@@ -149,5 +151,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
+  a {
+    color: black;
+    text-decoration: none;
+  }
 </style>
