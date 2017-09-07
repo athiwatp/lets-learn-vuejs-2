@@ -49,7 +49,7 @@
             <h3>Cart Total: {{ this.$store.state.cartTotal | currency }}</h3>
             <br>
             <button class="btn btn-default">
-              <router-link to="/shipping">Shipping &amp; Payment</router-link>
+              <router-link to="/billing">Add Billing Infomation</router-link>
             </button>
           </div>
         </div>

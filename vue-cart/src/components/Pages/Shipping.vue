@@ -1,95 +1,54 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <form>
-
-          <h3 class="text-center">Billing Address</h3>
-
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" class="form-control" id="billingFirstName" v-model="billingFirstName">
-          </div>
-
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" class="form-control" id="billingLastName" v-model="billingLastName">
-          </div>
-
-          <div class="form-group">
-            <label>Street Address</label>
-            <input type="text" class="form-control" id="billingStreetAddress" v-model="billingAddress">
-          </div>
-
-          <div class="form-group">
-            <label>City</label>
-            <input type="text" class="form-control" id="billingCity" v-model="billingCity">
-          </div>
-
-          <div class="form-group">
-            <label>State</label>
-            <input type="text" class="form-control" id="billingState" v-model="billingState">
-          </div>
-
-          <div class="form-group">
-            <label>Zip Code</label>
-            <input type="text" class="form-control" id="billingZipcode" v-model="billingZipcode">
-          </div>
-
-          <div style="text-align: right;">
-            <button class="btn btn-default" @click.prevent="sameBillingShipping">Billing &amp; Shipping are the same</button>
-          </div>
-
-        </form>
-      </div> <!-- /.col -->
-
-      <!--
-      |--------------------------------------------------------------------------
-      |                             Shipping Address
-      |--------------------------------------------------------------------------
-      -->
-
-      <div class="col-sm-12 col-md-6">
-        <form>
+      <div class="col-sm-12 col-md-8 col-md-offset-2">
+        <form @submit.prevent="validateBeforeSubmit">
 
           <h3 class="text-center">Shipping Address</h3>
 
           <div class="form-group">
             <label>First Name</label>
-            <input type="text" class="form-control" id="shippingFirstName" v-model="shippingFirstName">
+            <input name="First Name" v-model="shippingFirstName" v-validate="'required|alpha'" :class="{'form-control': true, 'is-danger': errors.has('First Name') }" type="text">
+            <span v-show="errors.has('First Name')" class="help is-danger">{{ errors.first('First Name') }}</span>
           </div>
 
           <div class="form-group">
             <label>Last Name</label>
-            <input type="text" class="form-control" id="shippingLastName" v-model="shippingLastName">
+            <input name="Last Name" v-model="shippingLastName" v-validate="'required|alpha_num'" :class="{'form-control': true, 'is-danger': errors.has('Last Name') }" type="text">
+            <span v-show="errors.has('Last Name')" class="help is-danger">{{ errors.first('Last Name') }}</span>
           </div>
 
           <div class="form-group">
             <label>Street Address</label>
-            <input type="text" class="form-control" id="shippingStreetAddress" v-model="shippingAddress">
+            <input name="Street Address" v-model="shippingAddress" v-validate="'required'" :class="{'form-control': true, 'is-danger': errors.has('Street Address') }" type="text">
+            <span v-show="errors.has('Street Address')" class="help is-danger">{{ errors.first('Street Address') }}</span>
           </div>
 
           <div class="form-group">
             <label>City</label>
-            <input type="text" class="form-control" id="shippingCity" v-model="shippingCity">
+            <input name="City" v-model="shippingCity" v-validate="'required|alpha'" :class="{'form-control': true, 'is-danger': errors.has('City') }" type="text">
+            <span v-show="errors.has('City')" class="help is-danger">{{ errors.first('City') }}</span>
           </div>
 
           <div class="form-group">
             <label>State</label>
-            <input type="text" class="form-control" id="shippingState" v-model="shippingState">
+            <input name="State" v-model="shippingState" v-validate="'required|alpha_spaces'" :class="{'form-control': true, 'is-danger': errors.has('State') }" type="text">
+            <span v-show="errors.has('State')" class="help is-danger">{{ errors.first('State') }}</span>
           </div>
 
           <div class="form-group">
             <label>Zip Code</label>
-            <input type="text" class="form-control" id="shippingZipcode" v-model="shippingZipcode">
+            <input name="Zip Code" v-model="shippingZipcode" v-validate="'required|numeric'" :class="{'form-control': true, 'is-danger': errors.has('Zip Code') }" type="text">
+            <span v-show="errors.has('Zip Code')" class="help is-danger">{{ errors.first('Zip Code') }}</span>
           </div>
 
           <div style="text-align: right;">
-            <button class="btn btn-default" @click.prevent="addBillingShippingAddresses">
-              <router-link to="/confirm">Proceed to Checkout</router-link>
-            </button>
+            <button class="btn btn-default" @click.prevent="sameBillingShipping">Billing &amp; Shipping are the same</button>
           </div>
-
+          <br>
+          <div class="text-right">
+            <button type="submit" class="btn btn-default">Confirm Your Order</button>
+          </div>
         </form>
       </div> <!-- /.col -->
     </div> <!-- /.row -->
@@ -101,12 +60,6 @@ export default {
   name: '',
   data () {
     return {
-      billingFirstName: '',
-      billingLastName: '',
-      billingAddress: '',
-      billingCity: '',
-      billingState: '',
-      billingZipcode: '',
       shippingFirstName: '',
       shippingLastName: '',
       shippingAddress: '',
@@ -117,14 +70,14 @@ export default {
   },
   methods: {
     sameBillingShipping () {
-      this.shippingFirstName = this.billingFirstName
-      this.shippingLastName = this.billingLastName
-      this.shippingAddress = this.billingAddress
-      this.shippingCity = this.billingCity
-      this.shippingState = this.billingState
-      this.shippingZipcode = this.billingZipcode
+      this.shippingFirstName = this.$store.state.billingAddress.billingFirstName
+      this.shippingLastName = this.$store.state.billingAddress.billingLastName
+      this.shippingAddress = this.$store.state.billingAddress.billingStreetAddress
+      this.shippingCity = this.$store.state.billingAddress.billingCity
+      this.shippingState = this.$store.state.billingAddress.billingState
+      this.shippingZipcode = this.$store.state.billingAddress.billingZipcode
     },
-    addBillingShippingAddresses () {
+    addShippingAddress () {
       this.$store.commit({
         type: 'updateShippingAddress',
         shippingFirstName: this.shippingFirstName,
@@ -134,15 +87,13 @@ export default {
         shippingState: this.shippingState,
         shippingZipcode: this.shippingZipcode
       })
-
-      this.$store.commit({
-        type: 'updateBillingAddress',
-        billingFirstName: this.billingFirstName,
-        billingLastName: this.billingLastName,
-        billingStreetAddress: this.billingAddress,
-        billingCity: this.billingCity,
-        billingState: this.billingState,
-        billingZipcode: this.billingZipcode
+    },
+    validateBeforeSubmit () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.addShippingAddress()
+          this.$router.push('confirm')
+        }
       })
     }
   }
@@ -154,5 +105,10 @@ export default {
   a {
     color: black;
     text-decoration: none;
+  }
+
+  .is-danger {
+    // border-color: red;
+    color: red;
   }
 </style>

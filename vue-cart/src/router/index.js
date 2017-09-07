@@ -7,6 +7,7 @@ import Watch3 from '@/components/Watches/Watch3'
 import Watch4 from '@/components/Watches/Watch4'
 import Checkout from '@/components/Pages/Checkout'
 import Shipping from '@/components/Pages/Shipping'
+import Billing from '@/components/Pages/Billing'
 import Confirm from '@/components/Pages/Confirm'
 import Thanks from '@/components/Pages/Thanks'
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/shipping',
       name: 'Shipping',
       component: Shipping
+    },
+    {
+      path: '/billing',
+      name: 'Billing',
+      component: Billing
     },
     {
       path: '/confirm',
