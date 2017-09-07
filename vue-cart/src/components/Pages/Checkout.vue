@@ -10,6 +10,10 @@
         <div class="cart-items">
           <h3>Total Items ({{ this.$store.state.cart.length }})</h3>
 
+          <div class="text-right">
+            <button class="btn btn-danger" @click.prevent="emptyCart">Empty Cart</button>
+          </div>
+
           <div class="in-check" >
             <ul class="unit">
               <li><span>Item</span></li>
@@ -87,6 +91,9 @@ export default {
     removeWatch (product) {
       this.$store.commit('removeWatch', product)
       this.$store.commit('updateCartTotal')
+    },
+    emptyCart () {
+      this.$store.commit('emptyCart')
     }
   }
 }

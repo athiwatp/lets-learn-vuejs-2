@@ -17,7 +17,7 @@
               <img src="/static/images/cart-1.png" alt="" />
             </router-link>
             <span style="color: #fff;" v-if="this.$store.state.cart.length">{{ this.$store.state.cart.length }}</span>
-            <p><a class="simpleCart_empty" @click.prevent="emptyCart">Empty Cart</a></p>
+            <!-- <p><a class="simpleCart_empty" @click.prevent="emptyCart">Empty Cart</a></p> -->
             <div class="clearfix"> </div>
           </div>
         </div>
@@ -71,9 +71,7 @@ export default {
     }
   },
   methods: {
-    emptyCart () {
-      this.$store.commit('emptyCart')
-    }
+
   }
 }
 </script>

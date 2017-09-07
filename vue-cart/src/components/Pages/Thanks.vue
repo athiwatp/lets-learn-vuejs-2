@@ -18,6 +18,9 @@ export default {
     return {
       //
     }
+  },
+  mounted () {
+    this.$store.commit('emptyCart')
   }
 }
 </script>

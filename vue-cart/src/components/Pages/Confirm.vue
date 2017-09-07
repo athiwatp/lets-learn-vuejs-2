@@ -4,6 +4,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12">
+            <h2 class="text-center">Confirm Your Order:</h2>
+            <br>
+            <br>
             <table class="table">
               <thead>
                 <tr>
@@ -60,6 +63,14 @@
         <br>
         <br>
         <div class="text-right">
+          <button class="btn btn-default">
+            <router-link to="/checkout">Update Cart</router-link>
+          </button>
+
+          <button class="btn btn-default">
+            <router-link to="/shipping">Update Shipping</router-link>
+          </button>
+
           <button class="btn btn-danger">
             <router-link to="/thanks">Complete Order</router-link>
           </button>
@@ -94,6 +105,11 @@ export default {
 
   a {
     color: #fff;
+    text-decoration: none;
+  }
+
+  .btn-default a {
+    color: black;
     text-decoration: none;
   }
 </style>
