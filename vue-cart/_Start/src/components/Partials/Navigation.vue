@@ -8,15 +8,13 @@
         </div>
         <div class="col-md-6 top-header-left">
           <div class="cart box_1">
-            <router-link to="/checkout">
               <div class="total">
                 <span class="">
-                  {{ this.$store.state.cartTotal | currency }}
+                  0.00
                 </span>
               </div>
               <img src="/static/images/cart-1.png" alt="" />
-            </router-link>
-            <span style="color: #fff;" v-if="this.$store.state.cart.length">{{ this.$store.state.cart.length }}</span>
+            <span style="color: #fff;"</span>
             <!-- <p><a class="simpleCart_empty" @click.prevent="emptyCart">Empty Cart</a></p> -->
             <div class="clearfix"> </div>
           </div>
@@ -38,7 +36,7 @@
         <div class="col-md-9 header-left">
         <div class="top-nav">
           <ul class="memenu skyblue">
-            <li class="active"><router-link to="/">Home</router-link></li>
+            <li class="active"><a href="/">Home</a></li>
           </ul>
         </div>
         <div class="clearfix"> </div>
@@ -64,14 +62,6 @@ export default {
     return {
       //
     }
-  },
-  computed: {
-    cartTotal () {
-      this.$store.state.cartTotal
-    }
-  },
-  methods: {
-
   }
 }
 </script>
