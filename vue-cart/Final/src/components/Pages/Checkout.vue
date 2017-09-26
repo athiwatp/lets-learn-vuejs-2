@@ -48,9 +48,9 @@
           <div  style="text-align: right;">
             <h3>Cart Total: {{ this.$store.state.cartTotal | currency }}</h3>
             <br>
-            <button class="btn btn-default">
-              <router-link to="/billing">Add Billing Infomation</router-link>
-            </button>
+
+              <router-link to="/billing"><button class="btn btn-default">Add Billing Infomation</button></router-link>
+
           </div>
         </div>
       </div>

@@ -63,21 +63,10 @@
         <br>
         <br>
         <div class="text-right">
-          <button class="btn btn-default">
-            <router-link to="/checkout">Update Cart</router-link>
-          </button>
-
-          <button class="btn btn-default">
-            <router-link to="/billing">Update Billing</router-link>
-          </button>
-
-          <button class="btn btn-default">
-            <router-link to="/shipping">Update Shipping</router-link>
-          </button>
-
-          <button class="btn btn-danger">
-            <router-link to="/thanks">Complete Order</router-link>
-          </button>
+          <router-link to="/checkout"><button class="btn btn-default">Update Cart</button></router-link>
+          <router-link to="/billing"><button class="btn btn-default">Update Billing</button></router-link>
+          <router-link to="/shipping"><button class="btn btn-default">Update Shipping</button></router-link>
+          <router-link to="/thanks"><button class="btn btn-danger">Complete Order</button></router-link>
         </div>
       </div> <!-- /.container -->
     </section>
